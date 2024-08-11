@@ -23,7 +23,7 @@ pub struct LogStruct {
 impl LogStruct {
     fn to_line(&self) -> String {
         format!(
-            "{}{}",
+            "{}{}\n",
             &self.date_time.format("%Y-%m-%d %H:%M:%S"),
             vec_to_string(&self.log_content),
         )
