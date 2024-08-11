@@ -23,7 +23,7 @@ pub struct LogStruct {
 impl LogStruct {
     fn to_line(&self) -> String {
         format!(
-            "{},{}",
+            "{}{}",
             &self.date_time.format("%Y-%m-%d %H:%M:%S"),
             vec_to_string(&self.log_content),
         )
@@ -33,8 +33,8 @@ impl LogStruct {
 fn vec_to_string(content: &Vec<String>) -> String {
     let mut content_csv = "".to_string();
     for i in content {
-        content_csv.push_str(i);
         content_csv.push(',');
+        content_csv.push_str(i);
     }
     content_csv
 }
