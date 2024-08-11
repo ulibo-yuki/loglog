@@ -1,0 +1,8 @@
+[package]
+name = "loglog"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+get_input = { git = "https://github.com/ulibo-yuki/get_input"}
+chrono = "0.4.38"
