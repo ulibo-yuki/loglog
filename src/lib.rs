@@ -1,4 +1,5 @@
 use chrono::{DateTime, Local};
+use core::fmt;
 use std::{
     env,
     fs::OpenOptions,
@@ -13,6 +14,15 @@ static COLUMN: OnceLock<String> = OnceLock::new();
 pub enum ErrorCode {
     FailedAddCsvColumn,
     FailedAddCsvData,
+}
+
+impl fmt::Display for ErrorCode {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ErrorCode::FailedAddCsvColumn => write!(f, "failed add csv column."),
+            ErrorCode::FailedAddCsvData => write!(f, "failed add csv data."),
+        }
+    }
 }
 
 pub struct LogStruct {
