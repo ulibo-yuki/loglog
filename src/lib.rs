@@ -23,7 +23,7 @@ pub struct LogStruct {
 impl LogStruct {
     fn to_line(&self) -> String {
         format!(
-            "\n{}{}\n",
+            "{}{}\n",
             &self.date_time.format("%Y-%m-%d %H:%M:%S"),
             vec_to_string(&self.log_content),
         )
@@ -36,6 +36,7 @@ fn vec_to_string(content: &Vec<String>) -> String {
         content_csv.push(',');
         content_csv.push_str(i);
     }
+    println!("{}", content_csv);
     content_csv
 }
 
@@ -120,3 +121,15 @@ pub fn set_column_exe_path(column: String) {
     );
 }
 
+#[cfg(test)]
+mod test {
+    use crate::{loglog, set_column_exe_path};
+
+    #[test]
+    fn it_works() {
+        let column = "c1,c2,c3".to_string();
+        set_column_exe_path(column);
+        let content = vec!["1".to_string(), "2".to_string(), "3".to_string()];
+        let _ = loglog(content);
+    }
+}
