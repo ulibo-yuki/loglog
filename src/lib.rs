@@ -17,7 +17,7 @@ pub enum ErrorCode {
 }
 
 impl fmt::Display for ErrorCode {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             ErrorCode::FailedAddCsvColumn => write!(f, "failed add csv column."),
             ErrorCode::FailedAddCsvData => write!(f, "failed add csv data."),
